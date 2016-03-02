@@ -245,7 +245,7 @@ let g:wildfire_objects = ["i'", 'i"', "i)", "i]", "i}", "i>", "ip"]     " 适用
 
 
 " UltiSnips插件的相关设置
-let g:UltiSnipsSnippetDirectories=["$VIM/tools/mysnippets"]
+let g:UltiSnipsSnippetDirectories=[$VIM.'tools/mysnippets']
 let g:UltiSnipsExpandTrigger="<leader><tab>"
 let g:UltiSnipsJumpForwardTrigger="<leader><tab>"
 let g:UltiSnipsJumpBackwardTrigger="<leader><s-tab>"
@@ -367,7 +367,7 @@ if has('gui_running')
     \endif<CR>
 
     " 设置gvim显示字体
-    set guifont=Source\ Code\ Pro\ Black:h6
+    set guifont=Source\ Code\ Pro\ Black:h7
     "set guifont=Hack\ Bold:h9
 
     "快速改变字号

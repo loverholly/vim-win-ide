@@ -2,6 +2,13 @@
 !/vim74/gvimfullscreen.dll
 /_indexer_files_tags
 /_indexer_files
-/tools/dll
+/vimfiles/compiler
+/vimfiles/doc
+/vimfiles/ftdetect
+/vimfiles/ftplugin
+/vimfiles/indent
+/vimfiles/keymap
+/vimfiles/plugin
+/vimfiles/syntax
 *.pyc
 
