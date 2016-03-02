@@ -1,3 +1,57 @@
 [submodule "vimfiles/bundle/pathogen"]
 	path = vimfiles/bundle/pathogen
 	url = https://github.com/tpope/vim-pathogen.git
+[submodule "vimfiles/bundle/a.vim"]
+	path = vimfiles/bundle/a.vim
+	url = https://github.com/vim-scripts/a.vim.git
+[submodule "vimfiles/bundle/DfrankUtil"]
+	path = vimfiles/bundle/DfrankUtil
+	url = https://github.com/vim-scripts/DfrankUtil.git
+[submodule "vimfiles/bundle/DrawIt"]
+	path = vimfiles/bundle/DrawIt
+	url = https://github.com/vim-scripts/DrawIt.git
+[submodule "vimfiles/bundle/jedi-vim"]
+	path = vimfiles/bundle/jedi-vim
+	url = https://github.com/davidhalter/jedi-vim.git
+[submodule "vimfiles/bundle/minibufexpl.vim"]
+	path = vimfiles/bundle/minibufexpl.vim
+	url = https://github.com/fholgado/minibufexpl.vim.git
+[submodule "vimfiles/bundle/nerdcommenter"]
+	path = vimfiles/bundle/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter.git
+[submodule "vimfiles/bundle/STL-Syntax"]
+	path = vimfiles/bundle/STL-Syntax
+	url = https://github.com/vim-scripts/STL-Syntax.git
+[submodule "vimfiles/bundle/tagbar"]
+	path = vimfiles/bundle/tagbar
+	url = https://github.com/majutsushi/tagbar.git
+[submodule "vimfiles/bundle/ultisnips"]
+	path = vimfiles/bundle/ultisnips
+	url = https://github.com/SirVer/ultisnips.git
+[submodule "vimfiles/bundle/vim-colors-solarized"]
+	path = vimfiles/bundle/vim-colors-solarized
+	url = https://github.com/altercation/vim-colors-solarized.git
+[submodule "vimfiles/bundle/vim-indent-guides"]
+	path = vimfiles/bundle/vim-indent-guides
+	url = https://github.com/nathanaelkane/vim-indent-guides.git
+[submodule "vimfiles/bundle/vim-multiple-cursors"]
+	path = vimfiles/bundle/vim-multiple-cursors
+	url = https://github.com/terryma/vim-multiple-cursors.git
+[submodule "vimfiles/bundle/vim-powerline"]
+	path = vimfiles/bundle/vim-powerline
+	url = https://github.com/Lokaltog/vim-powerline.git
+[submodule "vimfiles/bundle/vim-scripts"]
+	path = vimfiles/bundle/vim-scripts
+	url = https://github.com/vim-scripts/vimprj
+[submodule "vimfiles/bundle/wildfire.vim"]
+	path = vimfiles/bundle/wildfire.vim
+	url = https://github.com/gcmt/wildfire.vim.git
+[submodule "vimfiles/bundle/YouCompleteMe"]
+	path = vimfiles/bundle/YouCompleteMe
+	url = https://github.com/snakeleon/YouCompleteMe-x86.git
+[submodule "vimfiles/bundle/vim-signature"]
+	path = vimfiles/bundle/vim-signature
+	url = https://github.com/kshenoy/vim-signature.git
+[submodule "vimfiles/bundle/nerdtree"]
+	path = vimfiles/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git

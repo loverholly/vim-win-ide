@@ -10,12 +10,13 @@ YMC插件使用的是[@snakeleon](https://github.com/snakeleon/YouCompleteMe-x86
 
 ##使用方法
 ---
-1、git clone git@github.com:kun945/vim-ide-for-windows.git %InstallPath%\Vim<br>
+1、git clone --recursive git@github.com:kun945/vim-ide-for-windows.git %InstallPath%\Vim<br>
 2、安装windows版本的gvim到%InstallPath%\Vim目录下<br>
-3、复制%InstallPath%\Vim\ag.exe和ctags.exe到%PATH%目录中<br>
+3、复制%InstallPath%\tools\ag.exe和ctags.exe到%PATH%目录中<br>
 4、安装python2.7.x，x <= 10，过高的版本会闪退(如果你用的是'VIM - Vi IMproved 7.4 (2013 Aug 10, compiled Aug 10 2013 14:38:33)'官方编译版本的话)<br>
 5、安装jedi，使用命令"pip install jedi"<br>
-6、Have Fun!!<br>
+6、复制%InstallPath%\tools\mysnippets到%InstallPath%/vimfiles/bundle/ultisnips中<br>
+7、Have Fun!!<br>
 
 在win7/8/10中运行良好<br>
 

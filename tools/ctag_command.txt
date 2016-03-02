@@ -1,0 +1,6 @@
+生成cpp的tags：
+ctags -R --c++-kinds=+l+x+p --fields=+iaSl --extra=+q --language-force=c++ -f <file_name>
+
+生成c的tags：
+ctags -R --c-kinds=+l+x+p --fields=+lS -I __THROW,__nonnull -f <file_name>
+
