@@ -245,7 +245,7 @@ let g:wildfire_objects = ["i'", 'i"', "i)", "i]", "i}", "i>", "ip"]     " 适用
 
 
 " UltiSnips插件的相关设置
-let g:UltiSnipsSnippetDirectories=[$VIM.'tools/mysnippets']
+let g:UltiSnipsSnippetDirectories=["mysnippets"]
 let g:UltiSnipsExpandTrigger="<leader><tab>"
 let g:UltiSnipsJumpForwardTrigger="<leader><tab>"
 let g:UltiSnipsJumpBackwardTrigger="<leader><s-tab>"
