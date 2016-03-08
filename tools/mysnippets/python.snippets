@@ -63,7 +63,8 @@ def get_args(arglist):
 
 
 def get_quoting_style(snip):
-	style = snip.opt("g:ultisnips_python_quoting_style", "double")
+	#style = snip.opt("g:ultisnips_python_quoting_style", "double")
+	style = snip.opt("g:ultisnips_python_quoting_style", "single")
 	if style == 'single':
 		return SINGLE_QUOTES
 	return DOUBLE_QUOTES
@@ -450,6 +451,11 @@ write_function_docstring(t, snip) `
 	${0:pass}
 endsnippet
 
+snippet defn "function don't describe parameters"
+def ${1:function}(${2:arg1}):
+	'''${3:function describe}'''
+	${0:pass}
+endsnippet
 
 snippet defc "class method with docstrings" b
 @classmethod
