@@ -8,8 +8,6 @@
 感谢[@yangyangwithgnu](https://github.com/yangyangwithgnu)他的文章帮助我入门了VIM，推介对VIM有兴趣的同学去看看。<br>
 YMC插件使用的是[@snakeleon](https://github.com/snakeleon/YouCompleteMe-x86)编译的版本。<br>
 
-<b>目前最新的YMC版本无法使用。</b><br>
-
 ##使用方法
 ---
 1、git clone --recursive git@github.com:kun945/vim-ide-for-windows.git %InstallPath%\Vim<br>
@@ -20,7 +18,9 @@ YMC插件使用的是[@snakeleon](https://github.com/snakeleon/YouCompleteMe-x86
 6、复制%InstallPath%\tools\mysnippets到%InstallPath%/vimfiles/bundle/ultisnips中<br>
 7、Have Fun!!<br>
 
+使用官方编译 gvim74-1024.exe 版本<br>
 在win7/8/10中运行良好<br>
+
 
 ##R6034 ERROR解决办法
 ---

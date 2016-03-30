@@ -367,7 +367,7 @@ if has('gui_running')
     \endif<CR>
 
     " 设置gvim显示字体
-    set guifont=Source\ Code\ Pro\ Black:h7
+    set guifont=Source\ Code\ Pro\ Black:h8
     "set guifont=Hack\ Bold:h9
 
     "快速改变字号

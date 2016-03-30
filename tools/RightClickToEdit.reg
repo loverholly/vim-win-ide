@@ -3,4 +3,4 @@ Windows Registry Editor Version 5.00
 [HKEY_CLASSES_ROOT\*\shell\gvim]
 @="Edit with gvim"
 [HKEY_CLASSES_ROOT\*\shell\gvim\command]
-@="d:\\Vim\\gvim.exe -p --remote-silent \"%1\" \"%*\""
+@="K:\\Vim\\gvim.exe -p --remote-silent \"%1\" \"%*\""
