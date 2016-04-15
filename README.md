@@ -22,6 +22,17 @@ YMC插件使用的是[@snakeleon](https://github.com/snakeleon/YouCompleteMe-x86
 在win7/8/10中运行良好<br>
 
 
+##ycm_extra_conf.py 配置方法
+1、运行命令
+GCC:
+    $> g++ -E -x c++ - -v < /dev/null
+    $> gcc -E -x c - -v < /dev/null
+LLVM/Clang:
+    clang++ -E -x c++ - -v < /dev/null
+    clang -E -x c - -v < /dev/null
+2、将“#include <...> search starts here:”下的内容包含进flags中的-isystem选项
+
+
 ##R6034 ERROR解决办法
 ---
 gvim调用python过程中出现<br>

@@ -61,8 +61,8 @@ set expandtab				                    "将制表符扩展为空格
 set tabstop=4				                    "设置编辑时制表符占用空格数
 set shiftwidth=4			                    "设置格式化时制表符占用空格数
 set softtabstop=4			                    "让 vim 把连续数量的空格视为一个制表符
-set foldmethod=indent                           "基于缩进进行代码折叠
-"set foldmethod=syntax                           "基于语法进行代码折叠
+"set foldmethod=indent                           "基于缩进进行代码折叠
+set foldmethod=syntax                           "基于语法进行代码折叠
 set nofoldenable                                "启动vim时关闭代码折叠
 augroup codeset
 autocmd!
@@ -334,14 +334,15 @@ endfunction "SetCAndCpp
 
 
 " python设置函数
-"function! SetPython()
-"endfunction
+function! SetPython()
+    set foldmethod=indent                           "基于缩进进行代码折叠
+endfunction
 
 
 " 语言的差异化设置
 augroup languageset
 autocmd!
-"autocmd FileType python call SetPython()
+autocmd FileType python call SetPython()
 autocmd FileType c,cpp,h call SetCAndCpp()
 augroup END
 

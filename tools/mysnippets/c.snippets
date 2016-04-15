@@ -23,8 +23,6 @@ snippet #my "The file describe ..."
 /*
  * `!v expand('%')` ${1:TheFileDescribe}
  *
- * Copyright (C)  LiangCha
- *
  * This file is part of ${2:Module}
  *
  * Create by LiangCha<ckmx945@gmail.com> at `!v strftime("%Y-%m-%d %H:%M:%S")`
@@ -68,8 +66,7 @@ $0
 endsnippet
 
 snippet main "main() (main)"
-int main(int argc, char *argv[])
-{
+int main (int argc, char *argv[]) {
 	${VISUAL}${0}
 	return 0;
 }
@@ -165,11 +162,11 @@ struct ${1:`!p snip.rv = (snip.basename or "name") + "_t"`}
 endsnippet
 
 snippet funa "function annotations"
-/***********************************************************************
-TODO:	${1:dosomething}
-ARGS:	${2:arg1}
-RETURN:	${3:OK}
-***********************************************************************/
+/*
+ *TODO:		${1:dosomething}
+ *ARGS:		${2:arg1}
+ *RETURN:	${3:OK}
+*/
 endsnippet
 
 snippet fun "function" b
