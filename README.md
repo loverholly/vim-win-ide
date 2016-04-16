@@ -23,14 +23,15 @@ YMC插件使用的是[@snakeleon](https://github.com/snakeleon/YouCompleteMe-x86
 
 
 ##ycm_extra_conf.py 配置方法
-1、运行命令
-GCC:
-    $> g++ -E -x c++ - -v < /dev/null
-    $> gcc -E -x c - -v < /dev/null
-LLVM/Clang:
-    clang++ -E -x c++ - -v < /dev/null
-    clang -E -x c - -v < /dev/null
-2、将“#include <...> search starts here:”下的内容包含进flags中的-isystem选项
+---
+1、运行命令<br>
+GCC:<br>
+    $> g++ -E -x c++ - -v < /dev/null<br>
+    $> gcc -E -x c - -v < /dev/null<br>
+LLVM/Clang:<br>
+    clang++ -E -x c++ - -v < /dev/null<br>
+    clang -E -x c - -v < /dev/null<br>
+2、将“#include <...> search starts here:”下的内容包含进flags中的-isystem选项<br>
 
 
 ##R6034 ERROR解决办法
