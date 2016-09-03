@@ -46,9 +46,6 @@
 [submodule "vimfiles/bundle/YouCompleteMe"]
 	path = vimfiles/bundle/YouCompleteMe
 	url = https://github.com/snakeleon/YouCompleteMe-x86.git
-[submodule "vimfiles/bundle/vim-signature"]
-	path = vimfiles/bundle/vim-signature
-	url = https://github.com/kshenoy/vim-signature.git
 [submodule "vimfiles/bundle/nerdtree"]
 	path = vimfiles/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
