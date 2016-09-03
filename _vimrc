@@ -46,7 +46,7 @@ set hlsearch				                    "高亮显示搜索结果
 " 文件相关设置
 set writebackup				                    "覆盖不备份
 set noswapfile				                    "无缓存文件
-set autochdir				                    "设定文件浏览目录为当前目录
+"set autochdir                                  "设定文件浏览目录为当前目录
 augroup fileset
 autocmd!
 autocmd BufEnter * lcd %:p:h
@@ -145,9 +145,7 @@ let NERDTreeWinSize=22                          "设置子窗口宽度
 let NERDTreeWinPos="left"                       "设置子窗口位置
 let NERDTreeShowHidden=1                        "显示隐藏文件
 let NERDTreeMinimalUI=1                         "子窗口中不显示冗余帮助信息
-"let NERDTreeDirArrows=0                         "1用箭头代替+~
-let g:NERDTreeDirArrowExpandable='▸'
-let g:NERDTreeDirArrowCollapsible='▾'
+let NERDTreeDirArrows=1                         "1用箭头代替+~
 let NERDTreeAutoDeleteBuffer=1                  "删除文件时自动删除文件对应 buffer
 map <silent> <F3> :NERDTreeToggle<CR>
 
@@ -257,30 +255,8 @@ let g:ctrlsf_default_root='project'                 "以项目目录为搜索根
 let g:ctrlsf_position='right'                       "结果显示在右边
 
 
-" vim-signature插件的相关设置
-let g:SignatureMap = {
-        \ 'Leader'             :  "m",
-        \ 'PlaceNextMark'      :  "m,",
-        \ 'ToggleMarkAtLine'   :  "m.",
-        \ 'PurgeMarksAtLine'   :  "m-",
-        \ 'DeleteMark'         :  "dm",
-        \ 'PurgeMarks'         :  "mda",
-        \ 'PurgeMarkers'       :  "m<BS>",
-        \ 'GotoNextLineAlpha'  :  "']",
-        \ 'GotoPrevLineAlpha'  :  "'[",
-        \ 'GotoNextSpotAlpha'  :  "`]",
-        \ 'GotoPrevSpotAlpha'  :  "`[",
-        \ 'GotoNextLineByPos'  :  "]'",
-        \ 'GotoPrevLineByPos'  :  "['",
-        \ 'GotoNextSpotByPos'  :  "mn",
-        \ 'GotoPrevSpotByPos'  :  "mp",
-        \ 'GotoNextMarker'     :  "[+",
-        \ 'GotoPrevMarker'     :  "[-",
-        \ 'GotoNextMarkerAny'  :  "]=",
-        \ 'GotoPrevMarkerAny'  :  "[=",
-        \ 'ListLocalMarks'     :  "ms",
-        \ 'ListLocalMarkers'   :  "m?"
-        \ }
+" vimproc and  vimshell 插件相关设置
+let g:vimproc_dll_path=$VIMRUNTIME . "\\vimproc_win32.dll"
 
 
 " 设置环境保存项
@@ -289,40 +265,25 @@ let g:SignatureMap = {
 "map <leader>sr :source my.vim<cr> :rviminfo my.viminfo<cr>
 
 
-" windows和linux区别设置
-if has("win32")
-    "快速编辑_vimrc
-    noremap <leader>e :e! $VIM\_vimrc<cr>
-    augroup vimrcsave
-    autocmd!
-    autocmd! bufwritepost _vimrc source $VIM\_vimrc                     "保存既生效
-    augroup END
+"快速编辑_vimrc
+noremap <leader>e :e! $VIM\_vimrc<cr>
+augroup vimrcsave
+autocmd!
+autocmd! bufwritepost _vimrc source $VIM\_vimrc     "保存既生效
+augroup END
 
-    "undo历史保存目录
-    set undodir=~/_undo_history/
 
-    "插件indexer的相关设置
-    let g:indexer_indexerListFilename=$VIM . "\\_indexer_files"
-    let g:indexer_ctagsJustAppendTagsAtFileSave=0
+"插件indexer的相关设置
+let g:indexer_indexerListFilename=$VIM . "\\_indexer_files"
+let g:indexer_ctagsJustAppendTagsAtFileSave=0
 
-    set langmenu=zh_CN.utf-8                        "重新设定菜单和信息编码到utf-8
-    language messages zh_CN.utf-8                   "处理consle输出乱码
-elseif has("unix")
-    noremap <leader>e :e! $HOME/.vimrc<cr>
-    augroup vimrcsave
-    autocmd!
-    autocmd! bufwritepost vimrc source ~/.vimrc
-    augroup END
 
-    set undodir=~/.undo_history/
+set langmenu=zh_CN.utf-8                            "重新设定菜单和信息编码到utf-8
+language messages zh_CN.utf-8                       "处理consle输出乱码
 
-    "vim-arduino插件的相关设置
-    let g:vim_arduino_library_path = "/usr/share/arduino"
-    let g:vim_arduino_serial_port = "/dev/ttyACM0"
-endif
 
-" 保存undo的历史
-set undofile
+set undofile                                        " 保存undo的历史
+set undodir=~/_undo_history/                        "undo历史保存目录
 
 
 " c/c++设置函数
