@@ -6,7 +6,6 @@ execute pathogen#infect()
 
 filetype plugin indent on
 
-
 " 设置命令前缀
 let mapleader=","
 let g:mapleader = ","
@@ -15,8 +14,12 @@ let maplocalleader=","
 
 " 配色设置
 set background=dark
-colorscheme solarized
+"colorscheme vividchalk
+"colorscheme solarized
 "colorscheme desert
+colorscheme tender
+" set lighline theme inside lightline config
+let g:lightline = { 'colorscheme': 'tender' }
 
 
 " 字符编码相关设置
@@ -46,7 +49,7 @@ set hlsearch				                    "高亮显示搜索结果
 " 文件相关设置
 set writebackup				                    "覆盖不备份
 set noswapfile				                    "无缓存文件
-"set autochdir                                  "设定文件浏览目录为当前目录
+set autochdir				                    "设定文件浏览目录为当前目录
 augroup fileset
 autocmd!
 autocmd BufEnter * lcd %:p:h
@@ -131,6 +134,7 @@ nnoremap <leader>W :wa ++ff=unix<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>Q :qa<CR>
 inoremap jk <ESC>
+"vnoremap jk <ESC>
 
 
 " 窗口切换
@@ -140,12 +144,154 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 
+" 设置环境保存项
+"set sessionoptions="blank,buffers,globals,localoptions,tabpages,sesdir,folds,help,options,resize,winpos,winsize"
+"map <leader>ss :mksession! my.vim<cr> :wviminfo! my.viminfo<cr>
+"map <leader>sr :source my.vim<cr> :rviminfo my.viminfo<cr>
+
+
+" 快速编辑_vimrc
+noremap <leader>e :e! $VIM\_vimrc<cr>
+augroup vimrcsave
+autocmd!
+autocmd! bufwritepost _vimrc source $VIM\_vimrc                     "保存既生效
+augroup END
+
+
+" undo历史保存目录
+set undodir=~/_undo_history/
+set undofile
+
+
+" c/c++设置函数
+function! SetCAndCpp()
+    " a.vim插件的相关设置
+    nnoremap <Leader>ch :A<CR>
+    nnoremap <Leader>sch :AS<CR>
+endfunction "SetCAndCpp
+
+
+" python设置函数
+function! SetPython()
+    set foldmethod=indent                           "基于缩进进行代码折叠
+endfunction
+
+
+" 语言的差异化设置
+augroup languageset
+autocmd!
+autocmd FileType python call SetPython()
+autocmd FileType c,cpp,h call SetCAndCpp()
+augroup END
+
+
+" 图形界面的相关设置
+" 处理菜单及右键菜单乱码
+source $VIMRUNTIME/delmenu.vim
+source $VIMRUNTIME/menu.vim
+set langmenu=zh_CN.utf-8                        "重新设定菜单和信息编码到utf-8
+language messages zh_CN.utf-8                   "处理consle输出乱码
+
+
+" 工具栏和滚动栏的设置
+set guioptions-=m
+set guioptions-=T
+set guioptions-=r
+set guioptions-=l
+set guioptions-=L
+noremap <silent> <F2> :if &guioptions =~# 'T' <Bar>
+    \set guioptions-=T <Bar>
+    \set guioptions-=m <Bar>
+\else <Bar>
+    \set guioptions+=T <Bar>
+    \set guioptions+=m <Bar>
+\endif<CR>
+
+
+" 设置gvim显示字体
+set guifont=Source\ Code\ Pro\ Black:h8
+"set guifont=Hack\ Bold:h9
+
+
+"快速改变字号
+nnoremap <C-Up> :silent! let &guifont = substitute(
+        \ &guifont,
+        \ ':h\zs\d\+',
+        \ '\=eval(submatch(0)+1)',
+        \ '')<CR>
+        \:silent! let &gfw = substitute(
+        \ &gfw,
+        \ ':h\zs\d\+',
+        \ '\=eval(submatch(0)+1)',
+        \ '')<CR>
+nnoremap <C-Down> :silent! let &guifont = substitute(
+        \ &guifont,
+        \ ':h\zs\d\+',
+        \ '\=eval(submatch(0)-1)',
+        \ '')<CR>
+        \:silent! let &gfw = substitute(
+        \ &gfw,
+        \ ':h\zs\d\+',
+        \ '\=eval(submatch(0)-1)',
+        \ '')<CR>
+
+
+" WIN平台下图形界面设置
+" <F11>     全屏切换
+" Shift + h 降低窗口透明度
+" Shift + l 加大窗口透明度
+" Shift + r 切换Vim是否总在最前面显示
+let g:MyVimLib = 'gvimfullscreen.dll'
+function! ToggleFullScreen()
+    call libcall(g:MyVimLib, 'ToggleFullScreen', 27 + 29*256 + 30*256*256)
+endfunction "ToggleFullScreen
+let g:VimAlpha = 245
+function! SetAlpha(alpha)
+    let g:VimAlpha = g:VimAlpha + a:alpha
+    if g:VimAlpha < 180
+        let g:VimAlpha = 180
+    endif
+    if g:VimAlpha > 255
+        let g:VimAlpha = 255
+    endif
+    call libcall(g:MyVimLib, 'SetAlpha', g:VimAlpha)
+endfunction "SetAlpha
+let g:VimTopMost = 0
+function! SwitchVimTopMostMode()
+    if g:VimTopMost == 0
+        let g:VimTopMost = 1
+    else
+        let g:VimTopMost = 0
+    endif
+    call libcall(g:MyVimLib, 'EnableTopMost', g:VimTopMost)
+endfunction "SwitchVimTopMostMode
+"映射 Alt+Enter 切换全屏vim
+noremap <F11> <ESC>:call ToggleFullScreen()<cr>
+"切换Vim是否在最前面显示
+nnoremap <s-r> <ESC>:call SwitchVimTopMostMode()<cr>
+"增加Vim窗体的不透明度
+nnoremap <s-h> <ESC>:call SetAlpha(10)<cr>
+"减低Vim窗体的透明度
+nnoremap <s-l> <ESC>:call SetAlpha(-10)<cr>
+augroup guiset
+autocmd!
+"Vim启动的时候自动调用InitVim 以去除Vim的白色边框
+autocmd GUIEnter * call libcallnr(g:MyVimLib, 'InitVim', 0)
+" 默认设置透明
+autocmd GUIEnter * call libcallnr(g:MyVimLib, 'SetAlpha', g:VimAlpha)
+augroup END
+
+
+"--------------------------------------------------------------------------------------------------------------------------
+
 " NERDTree插件的相关设置
 let NERDTreeWinSize=22                          "设置子窗口宽度
 let NERDTreeWinPos="left"                       "设置子窗口位置
 let NERDTreeShowHidden=1                        "显示隐藏文件
 let NERDTreeMinimalUI=1                         "子窗口中不显示冗余帮助信息
-let NERDTreeDirArrows=1                         "1用箭头代替+~
+"let NERDTreeDirArrows=0                         "1用箭头代替+~
+let g:NERDTreeDirArrowExpandable='▸'
+let g:NERDTreeDirArrowCollapsible='▾'
 let NERDTreeAutoDeleteBuffer=1                  "删除文件时自动删除文件对应 buffer
 map <silent> <F3> :NERDTreeToggle<CR>
 
@@ -157,20 +303,12 @@ let g:indent_guides_guide_size=1                "色块宽度
 nmap <silent> <Leader>i <Plug>IndentGuidesToggle
 
 
-" minibufexpl.vim插件的相关设置
-let g:miniBufExplorerAutoStart=0                "默认不启动
-nnoremap <leader>bl :MBEToggle<cr>
-nnoremap <leader>bn :MBEbn<cr>
-nnoremap <leader>bp :MBEbp<cr>
-noremap <silent> <F5> :MBEToggle<cr>
-noremap <silent> <C-Tab> :MBEbn<cr>
-noremap <silent> <C-S-Tab> :MBEbp<cr>
-
-
 " indexer插件的相关设置（依赖dfrank_util，vimprj）
 "默认 --c++-kinds=+p+l，重新设置为 --c++-kinds=+p+l+x+c+d+e+f+g+m+n+s+t+u+v
 "默认 --fields=+iaS 不满足 YCM 要求，需改为 --fields=+iaSl
-let g:indexer_ctagsCommandLineOptions="--c++-kinds=+p+l+x+c+d+e+f+g+m+n+s+t+u+v --fields=+iaSl --extra=+q"
+"let g:indexer_ctagsCommandLineOptions="--c++-kinds=+p+l+x+c+d+e+f+g+m+n+s+t+u+v --fields=+iaSl --extra=+q"
+"let g:indexer_indexerListFilename=$VIM . "\\_indexer_files"
+"let g:indexer_ctagsJustAppendTagsAtFileSave=0
 
 
 " jedi-vim插件的相关设置
@@ -192,7 +330,7 @@ let g:ycm_cache_omnifunc=0                      "禁止缓存匹配项，每次�
 let g:ycm_seed_identifiers_with_syntax=1        "语法关键字补全
 let g:ycm_key_invoke_completion='<M-;>'         "修改对C函数的补全快捷键，默认是CTRL + space，修改为ALT + ;
 set completeopt-=preview                        "补全内容不以分割子窗口形式出现，只显示补全列表
-"let g:ycm_add_preview_to_completeopt=1          "匹配时打开预览窗口
+let g:ycm_add_preview_to_completeopt=1          "匹配时打开预览窗口
 "let g:ycm_autoclose_preview_window_after_completion=1           "匹配完成关闭预览
 nnoremap <leader>jd :YcmCompleter GoToDeclaration<CR>
 "只能是 #include 或已打开的文件
@@ -255,154 +393,34 @@ let g:ctrlsf_default_root='project'                 "以项目目录为搜索根
 let g:ctrlsf_position='right'                       "结果显示在右边
 
 
-" vimproc and  vimshell 插件相关设置
-let g:vimproc_dll_path=$VIMRUNTIME . "\\vimproc_win32.dll"
-
-
-" 设置环境保存项
-"set sessionoptions="blank,buffers,globals,localoptions,tabpages,sesdir,folds,help,options,resize,winpos,winsize"
-"map <leader>ss :mksession! my.vim<cr> :wviminfo! my.viminfo<cr>
-"map <leader>sr :source my.vim<cr> :rviminfo my.viminfo<cr>
-
-
-"快速编辑_vimrc
-noremap <leader>e :e! $VIM\_vimrc<cr>
-augroup vimrcsave
-autocmd!
-autocmd! bufwritepost _vimrc source $VIM\_vimrc     "保存既生效
-augroup END
-
-
-"插件indexer的相关设置
-let g:indexer_indexerListFilename=$VIM . "\\_indexer_files"
-let g:indexer_ctagsJustAppendTagsAtFileSave=0
-
-
-set langmenu=zh_CN.utf-8                            "重新设定菜单和信息编码到utf-8
-language messages zh_CN.utf-8                       "处理consle输出乱码
-
-
-set undofile                                        " 保存undo的历史
-set undodir=~/_undo_history/                        "undo历史保存目录
-
-
-" c/c++设置函数
-function! SetCAndCpp()
-    " a.vim插件的相关设置
-    nnoremap <Leader>ch :A<CR>
-    nnoremap <Leader>sch :AS<CR>
-endfunction "SetCAndCpp
-
-
-" python设置函数
-function! SetPython()
-    set foldmethod=indent                           "基于缩进进行代码折叠
-endfunction
-
-
-" 语言的差异化设置
-augroup languageset
-autocmd!
-autocmd FileType python call SetPython()
-autocmd FileType c,cpp,h call SetCAndCpp()
-augroup END
-
-
-" 图形界面的相关设置
-if has('gui_running')
-	" 处理菜单及右键菜单乱码
-	source $VIMRUNTIME/delmenu.vim
-	source $VIMRUNTIME/menu.vim
-
-	" 工具栏和滚动栏的设置
-    set guioptions-=m
-    set guioptions-=T
-    set guioptions-=r
-    set guioptions-=l
-    set guioptions-=L
-    noremap <silent> <F2> :if &guioptions =~# 'T' <Bar>
-        \set guioptions-=T <Bar>
-        \set guioptions-=m <Bar>
-    \else <Bar>
-        \set guioptions+=T <Bar>
-        \set guioptions+=m <Bar>
-    \endif<CR>
-
-    " 设置gvim显示字体
-    set guifont=Source\ Code\ Pro\ Black:h8
-    "set guifont=Hack\ Bold:h9
-
-    "快速改变字号
-    nnoremap <C-Up> :silent! let &guifont = substitute(
-            \ &guifont,
-            \ ':h\zs\d\+',
-            \ '\=eval(submatch(0)+1)',
-            \ '')<CR>
-            \:silent! let &gfw = substitute(
-            \ &gfw,
-            \ ':h\zs\d\+',
-            \ '\=eval(submatch(0)+1)',
-            \ '')<CR>
-    nnoremap <C-Down> :silent! let &guifont = substitute(
-            \ &guifont,
-            \ ':h\zs\d\+',
-            \ '\=eval(submatch(0)-1)',
-            \ '')<CR>
-            \:silent! let &gfw = substitute(
-            \ &gfw,
-            \ ':h\zs\d\+',
-            \ '\=eval(submatch(0)-1)',
-            \ '')<CR>
-
-	" vim-powerline插件的设置
-	let g:Powerline_colorscheme='solarized256'
-endif "has gui_funning
-
-
-" WIN平台下图形界面设置
-" <F11>     全屏切换
-" Shift + h 降低窗口透明度
-" Shift + l 加大窗口透明度
-" Shift + r 切换Vim是否总在最前面显示
-if has('gui_win32') && has('gui_running') && has('libcall')
-    let g:MyVimLib = 'gvimfullscreen.dll'
-    function! ToggleFullScreen()
-        call libcall(g:MyVimLib, 'ToggleFullScreen', 27 + 29*256 + 30*256*256)
-    endfunction "ToggleFullScreen
-    let g:VimAlpha = 245
-    function! SetAlpha(alpha)
-        let g:VimAlpha = g:VimAlpha + a:alpha
-        if g:VimAlpha < 180
-            let g:VimAlpha = 180
-        endif
-        if g:VimAlpha > 255
-            let g:VimAlpha = 255
-        endif
-        call libcall(g:MyVimLib, 'SetAlpha', g:VimAlpha)
-    endfunction "SetAlpha
-    let g:VimTopMost = 0
-    function! SwitchVimTopMostMode()
-        if g:VimTopMost == 0
-            let g:VimTopMost = 1
-        else
-            let g:VimTopMost = 0
-        endif
-        call libcall(g:MyVimLib, 'EnableTopMost', g:VimTopMost)
-    endfunction "SwitchVimTopMostMode
-    "映射 Alt+Enter 切换全屏vim
-    noremap <F11> <ESC>:call ToggleFullScreen()<cr>
-    "切换Vim是否在最前面显示
-    nnoremap <s-r> <ESC>:call SwitchVimTopMostMode()<cr>
-    "增加Vim窗体的不透明度
-    nnoremap <s-h> <ESC>:call SetAlpha(10)<cr>
-    "减低Vim窗体的透明度
-    nnoremap <s-l> <ESC>:call SetAlpha(-10)<cr>
-    augroup guiset
-    autocmd!
-    "Vim启动的时候自动调用InitVim 以去除Vim的白色边框
-    autocmd GUIEnter * call libcallnr(g:MyVimLib, 'InitVim', 0)
-    " 默认设置透明
-    autocmd GUIEnter * call libcallnr(g:MyVimLib, 'SetAlpha', g:VimAlpha)
-    augroup END
-endif "has win32 gui_running libcall
+" vim_airline插件的设置
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+let g:airline_theme = 'tender'
+"powerline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
+"打开tabline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+nnoremap <Leader>bn :bn<CR>
+nnoremap <Leader>bp :bp<CR>
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+nmap <leader>- <Plug>AirlineSelectPrevTab
+nmap <leader>+ <Plug>AirlineSelectNextTab
 
