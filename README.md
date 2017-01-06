@@ -13,12 +13,10 @@ YMC插件使用的是[@snakeleon](https://github.com/snakeleon/YouCompleteMe-x86
 1、git clone --recursive git@github.com:kun945/vim-ide-for-windows.git %InstallPath%\Vim<br>
 2、安装windows版本的gvim到%InstallPath%\Vim目录下<br>
 3、复制%InstallPath%\tools\ag.exe和ctags.exe到%PATH%目录中<br>
-4、安装python2.7.x，x <= 10，过高的版本会闪退(如果你用的是'VIM - Vi IMproved 7.4 (2013 Aug 10, compiled Aug 10 2013 14:38:33)'官方编译版本的话)<br>
-5、安装jedi，使用命令"pip install jedi"<br>
-6、复制%InstallPath%\tools\mysnippets到%InstallPath%/vimfiles/bundle/ultisnips中<br>
-7、Have Fun!!<br>
+4、复制%InstallPath%\tools\mysnippets到%InstallPath%/vimfiles/bundle/ultisnips中<br>
+5、Have Fun!!<br>
 
-使用官方编译 gvim74-1024.exe 版本<br>
+使用最新官方编译版本<br>
 在win7/8/10中运行良好<br>
 
 
@@ -128,16 +126,6 @@ let g:jedi#documentation_command = "K"
 let g:jedi#usages_command = "<leader>n"
 let g:jedi#completions_command = "<C-Space>"
 let g:jedi#rename_command = "<leader>r"
-```
-
-**minibufexpl.vim**
-```
-nnoremap <leader>bl :MBEToggle<cr>
-nnoremap <leader>bn :MBEbn<cr>
-nnoremap <leader>bp :MBEbp<cr>
-noremap <silent> <F5> :MBEToggle<cr>
-noremap <silent> <C-Tab> :MBEbn<cr>
-noremap <silent> <C-S-Tab> :MBEbp<cr>
 ```
 
 **nerdcommenter**
