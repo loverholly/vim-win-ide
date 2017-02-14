@@ -46,12 +46,6 @@ gvim调用python过程中出现<br>
 
 ###插件映射和命令
 
-**a.vim**
-```
-nnoremap <Leader>ch :A<CR>
-nnoremap <Leader>sch :AS<CR>
-```
-
 **ctrlsf.vim**
 ```
 nnoremap <Leader>sp :CtrlSF<CR>
