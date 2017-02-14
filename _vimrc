@@ -84,55 +84,13 @@ autocmd BufWritePre * sil %s/\s\+$//e           "保存文件时自动删除行�
 augroup END
 
 
-" 快速编辑结对符
-inoremap ( ()<Esc>i
-inoremap [ []<Esc>i
-inoremap { {}<Esc>i
-inoremap ) <c-r>=ClosePair(')')<CR>
-inoremap ] <c-r>=ClosePair(']')<CR>
-inoremap } <c-r>=CloseBracket()<CR>
-inoremap " <c-r>=QuoteDelim('"')<CR>
-inoremap ' <c-r>=QuoteDelim("'")<CR>
-augroup editpair
-autocmd!
-autocmd Syntax html,vim inoremap < <lt>><Esc>i| inoremap > <c-r>=ClosePair('>')<CR>
-augroup END
-
-func! ClosePair(char)
-    if getline('.')[col('.') - 1] == a:char
-        return "\<Right>"
-    else
-        return a:char
-    endif
-endfunc "ClosePair
-
-func! CloseBracket()
-    if match(getline(line('.') + 1), '\s*}') < 0
-        return "\<CR>}"
-    else
-        return "\<Esc>j0f}a"
-    endif
-endfunc "CloseBracket
-
-func! QuoteDelim(char)
-    let line = getline('.')
-    let col = col('.')
-    if line[col - 2] == "\\"
-        return a:char
-    elseif line[col - 1] == a:char
-        return "\<Right>"
-    else
-        return a:char.a:char."\<Esc>i"
-    endif
-endfunc "QuoteDelim
-
-
 " 通用键盘映射快捷键
 nnoremap <leader>N :noh<CR>
 nnoremap <leader>w :w ++ff=unix<CR>
 nnoremap <leader>W :wa ++ff=unix<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>Q :qa<CR>
+nnoremap <leader>bd :bdelete<CR>
 inoremap jk <ESC>
 "vnoremap jk <ESC>
 
@@ -290,8 +248,8 @@ let NERDTreeWinPos="left"                       "设置子窗口位置
 let NERDTreeShowHidden=1                        "显示隐藏文件
 let NERDTreeMinimalUI=1                         "子窗口中不显示冗余帮助信息
 "let NERDTreeDirArrows=0                         "1用箭头代替+~
-let g:NERDTreeDirArrowExpandable='▸'
-let g:NERDTreeDirArrowCollapsible='▾'
+"let g:NERDTreeDirArrowExpandable=''
+"let g:NERDTreeDirArrowCollapsible=''
 let NERDTreeAutoDeleteBuffer=1                  "删除文件时自动删除文件对应 buffer
 map <silent> <F3> :NERDTreeToggle<CR>
 
@@ -312,15 +270,16 @@ nmap <silent> <Leader>i <Plug>IndentGuidesToggle
 
 
 " jedi-vim插件的相关设置
-let g:jedi#auto_vim_configuration=0             "跳过自动配置
-let g:jedi#popup_select_first=0                 "弹出选项是不会默认选第一个
-let g:jedi#popup_on_dot=0                       "关闭.匹配
+"let g:jedi#auto_vim_configuration=0             "跳过自动配置
+"let g:jedi#popup_select_first=0                 "弹出选项是不会默认选第一个
+"let g:jedi#popup_on_dot=0                       "关闭.匹配
 "let g:jedi#completions_command=""               "关闭匹配命令
-let g:jedi#show_call_signatures="1"             "貌似是参数提示的选项,2就无法提示参数
-let g:jedi#completions_enabled=0                "关闭jedi-vim的补全功能
+"let g:jedi#show_call_signatures="1"             "貌似是参数提示的选项,2就无法提示参数
+"let g:jedi#completions_enabled=0                "关闭jedi-vim的补全功能
 
 
 " YouCompleteMe插件的相关设置
+let g:ycm_server_python_interpreter = 'C:\Users\sanchuan\AppData\Local\Programs\Python\Python36-32\python.exe'
 let g:ycm_warning_symbol='>'                    "语法警告提示符
 let g:ycm_complete_in_comments=1                "补全功能在注释中同样有效
 let g:ycm_confirm_extra_conf=0                  "允许 vim 加载 .ycm_extra_conf.py 文件，不再提示
@@ -331,7 +290,7 @@ let g:ycm_seed_identifiers_with_syntax=1        "语法关键字补全
 let g:ycm_key_invoke_completion='<M-;>'         "修改对C函数的补全快捷键，默认是CTRL + space，修改为ALT + ;
 set completeopt-=preview                        "补全内容不以分割子窗口形式出现，只显示补全列表
 let g:ycm_add_preview_to_completeopt=1          "匹配时打开预览窗口
-"let g:ycm_autoclose_preview_window_after_completion=1           "匹配完成关闭预览
+let g:ycm_autoclose_preview_window_after_completion=1           "匹配完成关闭预览
 nnoremap <leader>jd :YcmCompleter GoToDeclaration<CR>
 "只能是 #include 或已打开的文件
 nnoremap <leader>je :YcmCompleter GoToDefinition<CR>
@@ -390,7 +349,7 @@ let g:UltiSnipsJumpBackwardTrigger="<leader><s-tab>"
 " ctrlsf.vim插件的相关设置
 nnoremap <Leader>sp :CtrlSF<CR>
 let g:ctrlsf_default_root='project'                 "以项目目录为搜索根目录
-let g:ctrlsf_position='right'                       "结果显示在右边
+let g:ctrlsf_position='top'                         "结果显示在右边
 
 
 " vim_airline插件的设置
@@ -410,6 +369,8 @@ let g:airline_symbols.linenr = ''
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
+"let g:airline#extensions#tabline#show_close_button = 1
+"let g:airline#extensions#tabline#close_symbol = 'X'
 nnoremap <Leader>bn :bn<CR>
 nnoremap <Leader>bp :bp<CR>
 nmap <leader>1 <Plug>AirlineSelectTab1
