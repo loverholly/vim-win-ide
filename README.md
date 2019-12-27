@@ -1,14 +1,14 @@
-#在windows下像IDE一样使用VIM
+# 在windows下像IDE一样使用VIM
 ----
 
-##说明一下
+## 说明一下
 ----
 自用备份。主要备份自己使用vim中的配置和插件，还有记录一些使用vim的心得。<br>
 这里备份的配置和插件主要支持c/c++和python。<br>
 感谢[@yangyangwithgnu](https://github.com/yangyangwithgnu)他的文章帮助我入门了VIM，推介对VIM有兴趣的同学去看看。<br>
 YMC插件使用的是[@snakeleon](https://github.com/snakeleon/YouCompleteMe-x86)编译的版本。<br>
 
-##使用方法
+## 使用方法
 ---
 1、git clone --recursive git@github.com:kun945/vim-ide-for-windows.git %InstallPath%\Vim<br>
 2、安装windows版本的gvim到%InstallPath%\Vim目录下<br>
@@ -20,7 +20,7 @@ YMC插件使用的是[@snakeleon](https://github.com/snakeleon/YouCompleteMe-x86
 在win7/8/10中运行良好<br>
 
 
-##ycm_extra_conf.py 配置方法
+## ycm_extra_conf.py 配置方法
 ---
 1、运行命令<br>
 GCC:<br>
@@ -32,7 +32,7 @@ LLVM/Clang:<br>
 2、将“#include <...> search starts here:”下的内容包含进flags中的-isystem选项<br>
 
 
-##R6034 ERROR解决办法
+## R6034 ERROR解决办法
 ---
 gvim调用python过程中出现<br>
 使用%VimPath%\tools\exe\mt.exe<br>
@@ -41,7 +41,7 @@ gvim调用python过程中出现<br>
 3、编辑 gvim.manifest，将 dependentAssembly之间的的一行内容替换为 python.manifest 相应部分<br>
 4、命令 "mt.exe -manifest gvim.manifest -outputresource:d:%VimPath%\vim74\gvim.exe;1"<br>
 
-##快捷键和命令
+## 快捷键和命令
 ----
 
 ###插件映射和命令
