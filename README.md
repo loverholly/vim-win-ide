@@ -44,7 +44,7 @@ gvim调用python过程中出现<br>
 ## 快捷键和命令
 ----
 
-###插件映射和命令
+### 插件映射和命令
 
 **ctrlsf.vim**
 ```
@@ -278,7 +278,7 @@ nnoremap <M-g> :YcmCompleter GoToDefinitionElseDeclaration <C-R>=expand("<cword>
 ```
 
 
-###其它映射和命令
+### 其它映射和命令
 ----
 
 ```
