@@ -46,3 +46,15 @@
 [submodule "vimfiles/bundle/auto-pairs"]
 	path = vimfiles/bundle/auto-pairs
 	url = https://github.com/jiangmiao/auto-pairs.git
+[submodule "vimfiles/bundle/vim-fugitive"]
+	path = vimfiles/bundle/vim-fugitive
+	url = https://gitee.com/yaozhijin/vim-fugitive.git
+[submodule "vimfiles/bundle/vim-gitgutter"]
+	path = vimfiles/bundle/vim-gitgutter
+	url = https://gitee.com/space-vim/vim-gitgutter.git
+[submodule "vimfiles/bundle/gtags.vim"]
+	path = vimfiles/bundle/gtags.vim
+	url = git@github.com:vim-scripts/gtags.vim.git
+[submodule "vimfiles/bundle/vim-gutentags"]
+	path = vimfiles/bundle/vim-gutentags
+	url = git@github.com:ludovicchabant/vim-gutentags.git
