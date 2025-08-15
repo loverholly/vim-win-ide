@@ -1,3 +1,4 @@
+" let $HOME='C:\Program Files\Vim'
 filetype off
 
 " 运行pathogen
@@ -73,6 +74,29 @@ autocmd BufRead,BufNewFile *.c,*.cpp,*.sh,*.py, 2match Underlined /.\%81v/
 augroup END
 nnoremap <Leader>tn :tnext<CR>
 nnoremap <Leader>tp :tprevious<CR>
+
+" 让 gtags-cscope 接管 <C-]> 和补全
+set cscopetag
+set cscopeprg=gtags-cscope
+if filereadable('GTAGS')
+  cs add GTAGS
+endif
+
+" 补全触发：Ctrl+x Ctrl+o
+" 启用 omni-completion
+autocmd FileType c,cpp,java,python,go,php setlocal omnifunc=gtags#complete
+
+" 可选：补全时无视大小写
+let g:Gtags_Auto_Complete=1
+
+" 常用跳转映射
+nnoremap <Leader>gt :Gtags<CR>      " 跳到定义
+nnoremap <Leader>gr :Gtags -r<CR>   " 查引用
+nnoremap <Leader>gs :Gtags -g<CR>   " 全局搜索
+
+" 打开/关闭 quickfix
+nnoremap <leader>qo :copen<CR>
+nnoremap <leader>qc :cclose<CR>
 
 
 " 编辑相关设置
@@ -385,3 +409,17 @@ nmap <leader>9 <Plug>AirlineSelectTab9
 nmap <leader>- <Plug>AirlineSelectPrevTab
 nmap <leader>+ <Plug>AirlineSelectNextTab
 
+" ripgrep插件的设置
+set grepprg=rg\ --vimgrep\ --no-heading
+set grepformat=%f:%l:%c:%m
+nnoremap <leader>/ :grep <C-R>=expand('<cword>')<CR><CR>
+nnoremap <leader>j :cnext<CR>
+nnoremap <leader>k :cprev<CR>
+
+" vim-gitgutter
+" 启用行号
+set number
+" 设置符号
+let g:gitgutter_sign_added = '+'
+let g:gitgutter_sign_modified = '~'
+let g:gitgutter_sign_removed = '-'
