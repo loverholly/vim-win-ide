@@ -423,3 +423,21 @@ set number
 let g:gitgutter_sign_added = '+'
 let g:gitgutter_sign_modified = '~'
 let g:gitgutter_sign_removed = '-'
+
+" tabbar config
+" 新建标签页（等同 :tabnew）
+nnoremap <C-t>      :tabnew<CR>
+
+" 关闭当前标签页（等同 :tabc）
+nnoremap <C-w>      :tabclose<CR>
+
+" 下一个标签页
+nnoremap <C-Tab>    :tabnext<CR>
+
+" 上一个标签页
+nnoremap <C-S-Tab>  :tabprev<CR>
+
+" Alt+1~9 跳转第 1~9 个标签页
+for i in range(1,9)
+    execute 'nnoremap <A-' . i . '> ' . i . 'gt'
+endfor
