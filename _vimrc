@@ -441,3 +441,7 @@ nnoremap <C-S-Tab>  :tabprev<CR>
 for i in range(1,9)
     execute 'nnoremap <A-' . i . '> ' . i . 'gt'
 endfor
+
+" Ctrl+S 一键全部保存
+nnoremap <C-s> :wa<CR>
+inoremap <C-s> <Esc>:wa<CR>a
