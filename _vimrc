@@ -227,7 +227,7 @@ let g:MyVimLib = 'gvimfullscreen.dll'
 function! ToggleFullScreen()
     call libcall(g:MyVimLib, 'ToggleFullScreen', 27 + 29*256 + 30*256*256)
 endfunction "ToggleFullScreen
-let g:VimAlpha = 245
+let g:VimAlpha = 255
 function! SetAlpha(alpha)
     let g:VimAlpha = g:VimAlpha + a:alpha
     if g:VimAlpha < 180
