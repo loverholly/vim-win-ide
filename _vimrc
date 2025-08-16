@@ -118,12 +118,12 @@ nnoremap <leader>bd :bdelete<CR>
 inoremap jk <ESC>
 "vnoremap jk <ESC>
 
-
-" 窗口切换
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+" 左右互换
+nnoremap <Leader>xh <C-w>H
+nnoremap <Leader>xl <C-w>L
+" 上下互换
+nnoremap <Leader>xk <C-w>K
+nnoremap <Leader>xj <C-w>J
 
 
 " 设置环境保存项
@@ -426,16 +426,16 @@ let g:gitgutter_sign_removed = '-'
 
 " tabbar config
 " 新建标签页（等同 :tabnew）
-nnoremap <C-t>      :tabnew<CR>
+nnoremap <Leader>ta      :tabnew<CR>
 
 " 关闭当前标签页（等同 :tabc）
-nnoremap <C-w>      :tabclose<CR>
+nnoremap <Leader>tc      :tabclose<CR>
 
 " 下一个标签页
-nnoremap <C-Tab>    :tabnext<CR>
+nnoremap <Leader>tn    :tabnext<CR>
 
 " 上一个标签页
-nnoremap <C-S-Tab>  :tabprev<CR>
+nnoremap <Leader>tp  :tabprev<CR>
 
 " Alt+1~9 跳转第 1~9 个标签页
 for i in range(1,9)
