@@ -61,3 +61,6 @@
 [submodule "vimfiles/bundle/vim-visual-multi"]
 	path = vimfiles/bundle/vim-visual-multi
 	url = https://github.com/mg979/vim-visual-multi.git
+[submodule "vimfiles/bundle/gruvbox"]
+	path = vimfiles/bundle/gruvbox
+	url = https://github.com/morhetz/gruvbox.git
