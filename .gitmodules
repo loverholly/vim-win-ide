@@ -73,3 +73,6 @@
 [submodule "vimfiles/bundle/taghighlight"]
 	path = vimfiles/bundle/taghighlight
 	url = https://github.com/vim-scripts/taghighlight.git
+[submodule "vimfiles/bundle/LeaderF"]
+	path = vimfiles/bundle/LeaderF
+	url = https://github.com/Yggdroot/LeaderF.git

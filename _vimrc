@@ -90,6 +90,12 @@ autocmd FileType c,cpp,java,python,go,php setlocal omnifunc=gtags#complete
 
 " 可选：补全时无视大小写
 let g:Gtags_Auto_Complete=1
+let g:gtags_auto_add = 1
+
+" LeaderF+gtags
+let g:Lf_GtagsAutoGenerate = 1
+let g:Lf_GtagsAutoUpdate   = 1
+let g:Lf_Gtagslabel = 'native-pygments'
 
 " 常用跳转映射
 nnoremap <Leader>gt :Gtags<CR>      " 跳到定义
