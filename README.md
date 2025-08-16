@@ -14,7 +14,8 @@ YMC插件使用的是[@snakeleon](https://github.com/snakeleon/YouCompleteMe-x86
 2、安装windows版本的gvim到%InstallPath%\Vim目录下<br>
 3、复制%InstallPath%\tools\ag.exe和ctags.exe到%PATH%目录中<br>
 4、复制%InstallPath%\tools\mysnippets到%InstallPath%/vimfiles/bundle/ultisnips中<br>
-5、Have Fun!!<br>
+5、需要安装python3.6~3.11之间的任意版本
+6、Have Fun!!<br>
 
 使用最新官方编译版本<br>
 在win7/8/10中运行良好<br>
