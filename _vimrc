@@ -193,9 +193,9 @@ noremap <silent> <F2> :if &guioptions =~# 'T' <Bar>
 
 
 " 设置gvim显示字体
-set guifont=Source\ Code\ Pro\ Black:h8
+"set guifont=Source\ Code\ Pro\ Black:h8
 "set guifont=Hack\ Bold:h9
-
+set guifont=Google\ Sans\ Code:h14
 
 "快速改变字号
 nnoremap <C-Up> :silent! let &guifont = substitute(
