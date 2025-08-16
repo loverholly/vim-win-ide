@@ -18,6 +18,8 @@ set background=dark
 "colorscheme vividchalk
 "colorscheme solarized
 "colorscheme desert
+"colorscheme gruvbox
+"colorscheme onedark
 colorscheme tender
 " set lighline theme inside lightline config
 let g:lightline = { 'colorscheme': 'tender' }
