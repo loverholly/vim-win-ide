@@ -462,3 +462,8 @@ nnoremap <Leader>ps :PS<CR>
 nnoremap <Leader>z :wincmd _<CR>:wincmd \|<CR>
 nnoremap <Leader><Leader>z <C-w>=
 
+" F5 重载当前文件
+nnoremap <F5> :checktime<CR>
+
+" C-q强制退出term
+tnoremap <C-q> <C-\><C-n>:q<CR>
