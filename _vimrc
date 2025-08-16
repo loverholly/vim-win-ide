@@ -445,3 +445,12 @@ endfor
 " Ctrl+S 一键全部保存
 nnoremap <C-s> :wa<CR>
 inoremap <C-s> <Esc>:wa<CR>a
+
+" 横向切出新终端，直接跑 PowerShell
+command! PS term powershell
+nnoremap <Leader>ps :PS<CR>
+
+" 一键最大化/恢复当前窗口
+nnoremap <Leader>z :wincmd _<CR>:wincmd \|<CR>
+nnoremap <Leader><Leader>z <C-w>=
+
