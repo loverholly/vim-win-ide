@@ -76,3 +76,6 @@
 [submodule "vimfiles/bundle/LeaderF"]
 	path = vimfiles/bundle/LeaderF
 	url = https://github.com/Yggdroot/LeaderF.git
+[submodule "vimfiles/bundle/git-messenger.vim"]
+	path = vimfiles/bundle/git-messenger.vim
+	url = git@github.com:rhysd/git-messenger.vim.git
