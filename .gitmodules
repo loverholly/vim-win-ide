@@ -79,3 +79,6 @@
 [submodule "vimfiles/bundle/git-messenger.vim"]
 	path = vimfiles/bundle/git-messenger.vim
 	url = git@github.com:rhysd/git-messenger.vim.git
+[submodule "vimfiles/bundle/git-blame.vim"]
+	path = vimfiles/bundle/git-blame.vim
+	url = git@github.com:zivyangll/git-blame.vim.git
